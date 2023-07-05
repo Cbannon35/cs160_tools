@@ -133,7 +133,7 @@ class Widget():
     def render(self) -> None:
         pass
 
-    def hide(self -> None):
+    def hide(self) -> None:
         for elem in self.stuff:
             elem.destroy()
         self.stuff.clear()
@@ -188,15 +188,14 @@ class Screens():
 
     def set_current_page(self, page) -> None:
         self.current_page = self.lookup(page)
-        print("page lookup", self.current_page)
+        # print("page lookup", self.current_page)
         self.current_page.render()
         
     def change_screen(self, page) -> None:
-        print("changing screen")
-        print("current page", self.current_page)
-        print("new page", page)
+        # print("changing screen")
+        # print("current page", self.current_page)
+        # print("new page", page)
         self.current_page.hide()
-
         self.set_current_page(page)
 
 
@@ -206,9 +205,12 @@ class Data():
         self.width = 800
         self.height = 600
         self.timerDelay = 1# milliseconds
+        ### Layout ###
+
+        # tbd
+
         ### Widgets ###
         self.screens = Screens(root)
-        ### Layout ###
         
 
 
