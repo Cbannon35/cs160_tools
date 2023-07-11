@@ -4,6 +4,7 @@ import sys
 import os
 import json
 from dotenv import load_dotenv
+from test_send_email import email
 
 email_template = json.load(open('email_template.json'))
 load_dotenv()

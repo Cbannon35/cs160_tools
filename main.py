@@ -2,28 +2,10 @@
 GUI interface for the program
 '''
 import tkinter as tk
+from tkinter.ttk import *
 from dotenv import dotenv_values, set_key
 
-# root = tk.Tk()
-# root.title("Env Viewer")
-# root.minsize(700, 200) # Enough to fit the api key?
 
-# # Create labels and entry fields for each screen so we can destroy them while moving to the next screen
-# elements = []
-# errors = [] # for displaying errors
-
-# # def change_screens(next_screen):
-# #     for entry in elements:
-# #         entry.destroy()
-# #     next_screen()
-# def change_screens(next_screen):
-#     clear_elements()
-#     next_screen()
-
-# def clear_elements():
-#     for element in elements:
-#         element.destroy()
-#     elements.clear()
 
 # def hello_world():
 #     result_label = tk.Label(root, text="")
@@ -100,31 +82,9 @@ from dotenv import dotenv_values, set_key
 
 #     root.update()
 
-# startup_screen()
-# root.mainloop()
 
 
-# def run(width=300, height=300):
-#     # Set up data and call init
-#     class Struct(object): pass
-#     data = Struct()
-#     data.width = width
-#     data.height = height
-#     data.timerDelay = 1# milliseconds
-#     root = tK()
-#     init(data)
-
-#     # and launch the app
-#     root.mainloop()  # blocks until window is closed
-#     print("bye!")
-
-# def main():
-#     run(1280, 800)
-
-# if __name__ == '__main__':
-#     main()
-
-class Widget():
+class Screen():
     def __init__(self, root, screens) -> None:
         self.root = root
         self.screens = screens
@@ -138,64 +98,123 @@ class Widget():
             elem.destroy()
         self.stuff.clear()
 
-class TestWidget(Widget):
-    def __init__(self, root, screens):
+class StartupScreen(Screen):
+    def __init__(self, root, screens) -> None:
         super().__init__(root, screens)
-        # self.label = tk.Label(root, text="Hello World 2!")
-        # self.button = tk.Button(root, text="Click Me!", command=lambda: screens.change_screen("test_widget2"))    
+        self.env_values = dotenv_values(".env")
+        self.entry_elements = [] # for saving changes
+    
+    def save_changes(self):
+        print("saving changes")
+        print(self.entry_elements)
+        for key, entry in self.entry_elements:
+            value = entry.get()
+            print("setting key", key, "to", value)
+            set_key(".env", key, value)
+    
+    def entry_changed(self, *args):
+        print("entry changed")
+        self.save_button.config(state=tk.NORMAL)
+    
+    def validate_entries(self):
+        for key, entry in self.entry_elements:
+            value = entry.get()
+            if not value:
+                print("Please fill out all fields")
+                label = tk.Label(self.root, text="Please fill out all fields", fg="red")
+                label.grid(row=3, column=0, columnspan=2, padx=10, pady=5)
+                self.screens.errors.append(label)
+                return
+        print("all fields filled out")
+        self.screens.change_screen("hello_world")
     
     def render(self) -> None:
-        self.label = tk.Label(self.root, text="Hello World 2!")
-        self.button = tk.Button(self.root, text="Click Me!", command=lambda: self.screens.change_screen("test_widget2"))
-        self.label.pack()
-        self.button.pack()
-        self.stuff.append(self.label)
-        self.stuff.append(self.button)
+        print("rendering startup screen")
+        # buttons before entries for assignemnt ordering purposes
+        ok_button = tk.Button(self.root, text="OK", command=self.validate_entries)
+        ok_button.grid(row=len(self.env_values), column=0, columnspan=2, padx=10, pady=10)
+        self.stuff.append(ok_button)
 
+        save_button = tk.Button(self.root, text="Save", command=self.save_changes, state=tk.DISABLED)
+        save_button.grid(row=len(self.env_values), column=1, columnspan=2, padx=10, pady=10)
+        self.save_button = save_button
 
-class TestWidget2(Widget):
-    def __init__(self, root, screens):
-        super().__init__(root, screens)
-        # self.label = tk.Label(root, text="Hello World 3!")
-        # self.button = tk.Button(root, text="Click Me!", command=lambda: screens.change_screen("test_widget"))    
+        # for i, (key, value) in enumerate(self.env_values.items()):
+        #     label = tk.Label(self.root, text=key)
+        #     label.grid(row=i, column=0, padx=10, pady=5)
+        #     self.stuff.append(label)
+
+        #     entry_var = tk.StringVar()
+        #     entry_var.set(value)
+
+        #     entry = tk.Entry(self.root, width=70, textvariable=entry_var)
+        #     # entry.insert(0, value)
+        #     entry.grid(row=i, column=1, padx=10, pady=5)
+        #     self.stuff.append(entry)
+        #     self.entry_elements.append((key, entry))
+
+        #     entry_var.trace("w", self.entry_changed)
+
+# class TestWidget(Screen):
+#     def __init__(self, root, screens):
+#         super().__init__(root, screens)
+#         # self.label = tk.Label(root, text="Hello World 2!")
+#         # self.button = tk.Button(root, text="Click Me!", command=lambda: screens.change_screen("test_widget2"))    
     
-    def render(self) -> None:
-        self.label = tk.Label(self.root, text="Hello World 3!")
-        self.button = tk.Button(self.root, text="Click Me!", command=lambda: self.screens.change_screen("test_widget"))
-        self.label.pack()
-        self.button.pack()
-        self.stuff.append(self.label)
-        self.stuff.append(self.button)
+#     def render(self) -> None:
+#         label = tk.Label(self.root, text="Hello World 2!")
+#         button = tk.Button(self.root, text="Click Me!", command=lambda: self.screens.change_screen("test_widget2"))
+#         label.pack()
+#         button.pack()
+#         self.stuff.append(label)
+#         self.stuff.append(button)
+
+# class TestWidget2(Screen):
+#     def __init__(self, root, screens):
+#         super().__init__(root, screens)
+#         # self.label = tk.Label(root, text="Hello World 3!")
+#         # self.button = tk.Button(root, text="Click Me!", command=lambda: screens.change_screen("test_widget"))    
+    
+#     def render(self) -> None:
+#         label = tk.Label(self.root, text="Hello World 3!")
+#         button = tk.Button(self.root, text="Click Me!", command=lambda: self.screens.change_screen("test_widget"))
+#         label.pack()
+#         button.pack()
+#         self.stuff.append(label)
+#         self.stuff.append(button)
 
 
 
 class Screens():
     def __init__(self, root) -> None:
-        self.test_widget = TestWidget(root, self)
-        self.test_widget2 = TestWidget2(root, self)
-        self.current_page = None
+        # self.test_widget = TestWidget(root, self)
+        # self.test_widget2 = TestWidget2(root, self)
+        self.startup_screen = StartupScreen(root, self)
+        self.current_screen = None
     
-    def lookup(self, page) -> Widget:
-        if page == "test_widget":
-            return self.test_widget
-        elif page == "test_widget2":
-            return self.test_widget2
+    def lookup(self, page) -> Screen:
+        # if page == "test_widget":
+        #     return self.test_widget
+        # elif page == "test_widget2":
+        #     return self.test_widget2
+        if page == "startup_screen":
+            return self.startup_screen
         else:
             raise ValueError(f"Page {page} not found")
 
-    def get_current_page(self) -> Widget:
-        return self.current_page
+    def get_current_page(self) -> Screen:
+        return self.current_screen
 
     def set_current_page(self, page) -> None:
-        self.current_page = self.lookup(page)
+        self.current_screen = self.lookup(page)
         # print("page lookup", self.current_page)
-        self.current_page.render()
+        self.current_screen.render()
         
     def change_screen(self, page) -> None:
         # print("changing screen")
         # print("current page", self.current_page)
         # print("new page", page)
-        self.current_page.hide()
+        self.current_screen.hide()
         self.set_current_page(page)
 
 
@@ -207,12 +226,13 @@ class Data():
         self.timerDelay = 1# milliseconds
         ### Layout ###
 
+
+
         # tbd
 
         ### Widgets ###
         self.screens = Screens(root)
         
-
 
 class App():
     def __init__(self) -> None:
@@ -223,7 +243,7 @@ class App():
         self.root.title("App")
         self.root.minsize(self.data.width, self.data.height) # Enough to fit the api key?
 
-        self.data.screens.set_current_page("test_widget2")
+        self.data.screens.set_current_page("startup_screen")
         
         self.root.mainloop()
         print("App closed")

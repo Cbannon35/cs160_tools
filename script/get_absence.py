@@ -10,7 +10,7 @@ import requests
 import os
 import json
 from dotenv import load_dotenv
-from bases_and_tables import BASE_ID, ABSENCE_TABLE
+from script.bases_and_tables import BASE_ID, ABSENCE_TABLE
 
 
 # Load in api keys
