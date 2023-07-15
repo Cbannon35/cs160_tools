@@ -1,5 +1,5 @@
 '''
-Main tool for CLI interface
+Main tool for CLI
 '''
 import sys
 from tqdm import tqdm
