@@ -36,4 +36,4 @@ def send_message(message):
 def email(sender, to, subject, message_text, Cc=""):
     message = create_message(sender, to, subject, message_text, Cc)
     message = encode_message(message)
-    send_message(message)
+    return send_message(message)

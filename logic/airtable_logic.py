@@ -58,14 +58,14 @@ def fetch_students(flag: str) -> tuple[list, list]:
     return approved, rejected
    
 
-def update_student(ids: list, flag: str) -> None:
+def update_students(ids: list, flag: str) -> None:
     # our field to update
     fields = {'Emailed': True}
     data = {'fields': fields}
     data_json = json.dumps(data)
     url = get_url(flag)
 
-    for id in ids:
+    for id in tqdm(ids, desc=f"Updating students in {flag} table"):
         # Make a PATCH request to update the record
         response = requests.patch(f'{url}/{id}', headers=headers, data=data_json)
         if response.status_code != 200:
@@ -73,6 +73,21 @@ def update_student(ids: list, flag: str) -> None:
         else:
             updated_record = response.json()['fields']
             print(f'Record updated successfully: {updated_record}')
+
+def update_student(id: str, flag:str) -> None:
+    # our field to update
+    fields = {'Emailed': True}
+    data = {'fields': fields}
+    data_json = json.dumps(data)
+    url = get_url(flag)
+
+    # Make a PATCH request to update the record
+    response = requests.patch(f'{url}/{id}', headers=headers, data=data_json)
+    if response.status_code != 200:
+        print(f'Request failed with status code {response.status_code}')
+    else:
+        updated_record = response.json()['fields']
+        print(f'Record updated successfully: {updated_record}')
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ Main tool for CLI
 import sys
 from tqdm import tqdm
 from logic.json_logic import read_students, write_students, clear_students, read_emails, write_emails, clear_emails, read_email_template
-from logic.airtable_logic import fetch_students, update_student
+from logic.airtable_logic import fetch_students, update_student, update_students
 
 
 def import_email_logic():
@@ -88,7 +88,7 @@ def generate():
         body = body.replace("{Event}", Event)
         body = body.replace("{Date}", Date)
         generated_email = {"sender": SENDER, "to": student['fields']['Email'], "subject": approved_template['subject'], "body": body, "Cc": approved_template['Cc']}
-        approved_emails.append(generated_email)
+        approved_emails.append((generated_email, student['id']))
     for student in tqdm(rejected, desc="Generating rejected emails"):
         Student, Event, Date = student['fields']['Name'], student['fields']['Activity'], student['fields']['Date']
         body = f"{rejected_template['body']}"
@@ -96,14 +96,44 @@ def generate():
         body = body.replace("{Event}", Event)
         body = body.replace("{Date}", Date)
         generated_email = {"sender": SENDER, "to": student['fields']['Email'], "subject": rejected_template['subject'], "body": body, "Cc": rejected_template['Cc']}
-        rejected_emails.append(generated_email)
+        rejected_emails.append((generated_email, student['id']))
     
     all_emails = approved_emails + rejected_emails
     write_emails(all_emails, absence_or_extension)
     print(f"Generated {len(all_emails)} emails!")
 
 def email():
-    pass
+    '''Sends emails to students'''
+    return
+    emails, absence_or_extension = read_emails()
+    if absence_or_extension is None:
+        print("No emails generated! Try 'generate [OPTION]'")
+        return
+    import_email_logic()
+    sent = []
+    failed = []
+    for email, record_id in tqdm(emails, desc="Sending emails"):
+        # sender, to, subject, body, Cc = email['sender'], email['to'], email['subject'], email['body'], email['Cc']
+        if email(email['sender'], email['to'], email['subject'], email['body'], email['Cc']):
+            sent.append(record_id)
+        else:
+            print(f"Failed to send email to {email['to']}")
+            failed.append((email, record_id))
+        
+    if len(failed) != 0:
+        print(f"Failed to send {len(failed)} emails!")
+        print("Writing failed emails to emails.json...")
+        print("Please view emails.json to see which emails failed to send.")
+        write_emails(failed, absence_or_extension)
+    else:
+        print("Successfully sent all emails!")
+        print("Deleting emails from emails.json...")
+        clear_emails()
+    
+    print("Updating Airtable...")
+    update_students(sent, absence_or_extension)
+
+
 
 def view(flag : str) -> None:
     '''Displays the students or the emails json in a readable format'''
