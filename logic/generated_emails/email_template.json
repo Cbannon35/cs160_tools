@@ -2,12 +2,12 @@
   "extension": {},
   "absence": {
     "rejected": {
-      "CC": "cs160@berkeley.edu hsuresh@berkeley.edu",
+      "Cc": "cs160@berkeley.edu hsuresh@berkeley.edu",
       "subject": "CS160 ABSENCE NOT EXCUSED",
-      "body": "Dear {Student},\n\nWe hope this email finds you well. Your absence request for {Date} has been denied. Please reach out to cs160@berkeley.edu if you have any further questions or concerns.\n\nBest,\nCS 160 Staff"
+      "body": "Dear {Student},\n\nWe hope this email finds you well. Your absence request for {Event} on {Date} has been denied. Please reach out to cs160@berkeley.edu if you have any further questions or concerns.\n\nBest,\nCS 160 Staff"
     },
     "approved": {
-      "CC": "cs160@berkeley.edu and hsuresh@berkeley.edu",
+      "Cc": "cs160@berkeley.edu hsuresh@berkeley.edu",
       "subject": "CS160 ABSENCE EXCUSED",
       "body": "Dear {Student}.\n\nWe hope this email finds you well. This is an email confirmation that your absence on {Date} for {Event} has been excused.\n\nBest,\nCS160 staff"
     }
