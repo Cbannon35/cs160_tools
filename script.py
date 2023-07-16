@@ -27,7 +27,7 @@ flags_help = {
     "-e": "extension",
     "-s": "students",
     "-m": "emails",
-    "-all": "all options"
+    "-all": "all"
 }
 
 def help(*args) -> None:
