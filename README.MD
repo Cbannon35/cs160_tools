@@ -41,37 +41,28 @@ python script.py
 
 <h2 id="Requirements">Requirements</h2>
 
-<ul>
-  <li>
-    <details open="open">
-    <summary>Environment Variables</summary>
-      Create a <code>.env</code> file in the root of the project and then add:
-      <pre>
-      <code>
-      AIRTABLE_API_KEY=[your airtable oauth key]
-      EMAIL_SENDER=[your email here]
-      </code>
-      </pre>
+<h4>Environment Variables</h4>
 
-  </li>
-  <li>
-    <details open="open">
-    <summary>Email permissions</summary>
-      You will also need to put a <code>credentials.json</code> in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
-    </details>
-  </li>
-  <li>
-  <details open="open">
-  <summary>Airtable fields</summary>
-    Lastly, make sure each record you want to fetch from your airtable base has the following fields
-    <ul>
-      <li>Emailed (checkbox) ~ will not be fetched from airtable (assumes already fetched and emailed)</li>
-      <li>Approved (checkbox) ~ used to differentiate students in their request status</li>
-      <li>Email Text (string) ~ the body of the email</li>
-      <li>Wait (checkbox) ~ allows you to prevent selected records from being fetched</li>
-    </ul>
-  </details>
-  </li>
+Create a `.env` file in the root of the project and then add:
+
+```
+AIRTABLE_API_KEY=[your airtable oauth key]
+EMAIL_SENDER=[your email here]
+```
+
+
+ 
+<h4>Email permissions</h4>
+
+You will also need to put a `credentials.json` in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
+
+<h4>Airtable fields</h4>
+Lastly, make sure each record you want to fetch from your airtable base has the following fields
+<ul>
+  <li>Emailed (checkbox) ~ will not be fetched from airtable (assumes already fetched and emailed)</li>
+  <li>Approved (checkbox) ~ used to differentiate students in their request status</li>
+  <li>Email Text (string) ~ the body of the email</li>
+  <li>Wait (checkbox) ~ allows you to prevent selected records from being fetched</li>
 </ul>
 
 ---
