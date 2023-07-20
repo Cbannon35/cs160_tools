@@ -45,7 +45,7 @@ python script.py
   <li>
     <details open="open">
     <summary>Environment Variables</summary>
-      Create a <pre><code>.env</code></pre> file in the root of the project and then add:
+      Create a <code>.env</code> file in the root of the project and then add:
       <pre><code>
       AIRTABLE_API_KEY=[your airtable oauth key]
       EMAIL_SENDER=[your email here]
