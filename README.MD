@@ -47,10 +47,12 @@ python script.py
     <summary>Environment Variables</summary>
       Create a `.env` file in the root of the project and then add:
 
+
       ```
       AIRTABLE_API_KEY=[your airtable oauth key]
       EMAIL_SENDER=[your email here]
       ```
+
 
     </details>
   </li>
@@ -79,10 +81,8 @@ python script.py
 <h2 id="example-workflow">Example Workflow</h2>
 <details>
   <summary>Arguments</summary>
-  <ul>
-    <li>`[TABLE]` ~ specify an airtable base (ex: `absence` or `extension`)</li>
-    <li>`[OPTION]` ~ either `students` or `emails`</li>
-  <ul>
+    - `[TABLE]` ~ specify an airtable base (ex: `absence` or `extension`)</li>
+    - `[OPTION]` ~ either `students` or `emails`</li>
 </details>
 
 <p>Startup the script</p>
@@ -109,6 +109,9 @@ generate
 email
 ```
 
+<p>Note: You can view records you fetched or emails you generate `view [OPTION]</p>
+<p>Note: You can also clear fetched records or generated emails `clear [OPTION]</p>
+
 ---
 
 <h2 id="next-steps">Next Steps</h2>
@@ -120,7 +123,7 @@ email
   </li>
   <li>Make script more robust
   <details>
-  Because this script had an end goal in mind it was incredibly simple to just whip it up in python. But, this means the line was blurred between how much logic should reside in airtable, and how much should reside locally. Airtable also provides great scripting tools, so potentially, there will be less logic to work with in python as it will be delegated to airtable (e.g moved subject and cc fields to airtable from ```email_template.json```)
+  Because this script had an end goal in mind it was incredibly simple to just whip it up in python. But, this means the line was blurred between how much logic should reside in airtable, and how much should reside locally. Airtable also provides great scripting tools, so potentially, there will be less logic to work with in python as it will be delegated to airtable (e.g moved subject and cc fields to airtable from `email_template.json`)
   </details>
   </li>
 <li>Cleanup Naming to make script more readable</li>
