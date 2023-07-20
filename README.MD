@@ -70,9 +70,10 @@ Lastly, make sure each record you want to fetch from your airtable base has the 
 <h2 id="example-workflow">Example Workflow</h2>
 <details>
   <summary>Arguments</summary>
+<ul>
     <li><code>[TABLE]</code> ~ specify an airtable base (ex: <code>absence</code> or <code>extension</code>)</li>
-
     <li><code>[OPTION]</code> ~ either <code>students</code> or <code>emails</code></li>
+</ul>
 </details>
 
 <p>Startup the script</p>
