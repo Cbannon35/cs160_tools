@@ -40,9 +40,9 @@ python script.py
 ---
 
 <h2 id="Requirements">Requirements</h2>
+
 <ul>
   <li>
-    
     <details open="open">
     <summary>Environment Variables</summary>
       Create a `.env` file in the root of the project and then add:
@@ -72,7 +72,7 @@ python script.py
     </ul>
   </details>
   </li>
-<ul>
+</ul>
 
 ---
 
