@@ -109,8 +109,8 @@ generate
 email
 ```
 
-<p>Note: You can view records you fetched or emails you generate `view [OPTION]</p>
-<p>Note: You can also clear fetched records or generated emails `clear [OPTION]</p>
+<p>Note: You can view records you fetched or emails you generate `view [OPTION]`</p>
+<p>Note: You can also clear fetched records or generated emails `clear [OPTION]`</p>
 
 ---
 
