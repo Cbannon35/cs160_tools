@@ -5,10 +5,10 @@
 
 <p>This Repo Houses a script used in the <a href="cs160su23.com" target="_blank">Summer 2023 offering of CS 160</a> at UC Berkeley. The script was used to automate email response from staff for students that request extensions on assignemnts and excused absences.</p>
 
-<p>This script can be extended/adapted to other course offerings or purposes, but it is designed to fetch information from Airtable, then use that information to send emails to recipiants, using gmail</p>
+<p>This script can be extended/adapted to other course offerings or purposes, but it is designed to fetch information from Airtable, then use that information to send emails to recipiants, using gmail.</p>
 
 <!-- TABLE OF CONTENTS taken from https://github.com/ma-shamshiri/Pacman-Game/blob/master/README.md?plain=1-->
-<h2 id="table-of-contents"> :book: Table of Contents</h2>
+<h2 id="table-of-contents">Table of Contents</h2>
 
 <details open="open">
   <summary>Table of Contents</summary>
@@ -117,6 +117,11 @@ Note: You can also clear fetched records or generated emails `clear [OPTION]`
   Because this script had an end goal in mind it was incredibly simple to just whip it up in python. But, this means the line was blurred between how much logic should reside in airtable, and how much should reside locally. Airtable also provides great scripting tools, so potentially, there will be less logic to work with in python as it will be delegated to airtable (e.g moved subject and cc fields to airtable from <code>email_template.json</code>)
   </details>
   </li>
-<li>Cleanup Naming to make script more readable</li>
+<li>Cleanup Naming to make script more readable
+<details>
+ Again, Hard to do when you are making it for a singular purpose within the course but realize it could be further generalized... maybe this script will stay generic and I will branch to a general version.
+  </details>
+</li>
+
 <ul>
 
