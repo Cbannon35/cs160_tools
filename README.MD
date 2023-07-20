@@ -56,7 +56,7 @@ python script.py
   <li>
     <details open="open">
     <summary>Email permissions</summary>
-      You will also need to put a `credentials.json` in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
+      You will also need to put a <code>credentials.json</code> in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
     </details>
   </li>
   <li>
@@ -78,8 +78,8 @@ python script.py
 <h2 id="example-workflow">Example Workflow</h2>
 <details>
   <summary>Arguments</summary>
-    - `[TABLE]` ~ specify an airtable base (ex: `absence` or `extension`)</li>
-    - `[OPTION]` ~ either `students` or `emails`</li>
+    - <code>[TABLE]</code> ~ specify an airtable base (ex: <code>absence` or <code>extension`)</li>
+    - <code>[OPTION]</code> ~ either <code>students</code> or <code>emails</code></li>
 </details>
 
 <p>Startup the script</p>
@@ -121,7 +121,7 @@ Note: You can also clear fetched records or generated emails `clear [OPTION]`
   </li>
   <li>Make script more robust
   <details>
-  Because this script had an end goal in mind it was incredibly simple to just whip it up in python. But, this means the line was blurred between how much logic should reside in airtable, and how much should reside locally. Airtable also provides great scripting tools, so potentially, there will be less logic to work with in python as it will be delegated to airtable (e.g moved subject and cc fields to airtable from `email_template.json`{.bash})
+  Because this script had an end goal in mind it was incredibly simple to just whip it up in python. But, this means the line was blurred between how much logic should reside in airtable, and how much should reside locally. Airtable also provides great scripting tools, so potentially, there will be less logic to work with in python as it will be delegated to airtable (e.g moved subject and cc fields to airtable from <code>email_template.json</code>)
   </details>
   </li>
 <li>Cleanup Naming to make script more readable</li>
