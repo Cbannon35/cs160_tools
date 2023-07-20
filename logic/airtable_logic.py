@@ -42,7 +42,7 @@ def fetch_students(flag: str) -> tuple[list, list]:
     # Handle the response
     if response.status_code != 200:
          print(f'Request failed with status code {response.status_code}')
-    
+    print(response.json())
     records = response.json()['records']
     approved = []
     rejected = []
@@ -50,10 +50,13 @@ def fetch_students(flag: str) -> tuple[list, list]:
         # Access record fields using the 'fields' key
         fields = record['fields']
 
-        if fields.get("Approved") == True:
-            approved.append(record)
+        if fields.get("Wait") != True: # extra flag to allow delaying email
+            if fields.get("Approved") == True:
+                approved.append(record)
+            else:
+                rejected.append(record)
         else:
-            rejected.append(record)
+            print(f"Skipping {fields['Name']}, waiting a bit longer")
 
     return approved, rejected
    

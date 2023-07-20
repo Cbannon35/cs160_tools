@@ -24,7 +24,7 @@ def clear_students():
     write_students([], [], None)
 
 ### Emails ###
-def read_emails() -> tuple[list, str]:
+def read_emails():
     emails = json.load(open(emails_path))
     return emails['emails'], emails['flag']
 
