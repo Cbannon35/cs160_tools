@@ -49,7 +49,7 @@ python script.py
       <pre><code>
       AIRTABLE_API_KEY=[your airtable oauth key]
       EMAIL_SENDER=[your email here]
-      </code></pre
+      </code></pre>
 
     </details>
   </li>
@@ -78,7 +78,7 @@ python script.py
 <h2 id="example-workflow">Example Workflow</h2>
 <details>
   <summary>Arguments</summary>
-    - <code>[TABLE]</code> ~ specify an airtable base (ex: <code>absence` or <code>extension`)</li>
+    - <code>[TABLE]</code> ~ specify an airtable base (ex: <code>absence</code> or <code>extension</code>)</li>
     - <code>[OPTION]</code> ~ either <code>students</code> or <code>emails</code></li>
 </details>
 
