@@ -21,17 +21,17 @@
   </ol>
 </details>
 
-<h4 id="setup">Getting Started</h4>
+<h2 id="setup">Getting Started</h2>
 <p>First, clone the repo</p>
 
 ```
-git clone [this repo]
+git clone git@github.com:Cbannon35/cs160_tools.git
 ```
 
 <p>Run the script</p>
 
 ```
-cd [src]
+cd cs160_tools
 python script.py
 ```
 
@@ -39,23 +39,25 @@ python script.py
 
 ---
 
-<h4 id="Requirements">Requirements</h4>
+<h2 id="Requirements">Requirements</h2>
 <ul>
   <li>
     
     <details open="open">
     <summary>Environment Variables</summary>
-      Create a ```.env``` file in the root of the project and then add:
+      Create a `.env` file in the root of the project and then add:
+
       ```
       AIRTABLE_API_KEY=[your airtable oauth key]
       EMAIL_SENDER=[your email here]
       ```
+
     </details>
   </li>
   <li>
     <details open="open">
     <summary>Email permissions</summary>
-      You will also need to put a ```credentials.json``` in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
+      You will also need to put a `credentials.json` in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
     </details>
   </li>
   <li>
@@ -78,8 +80,8 @@ python script.py
 <details>
   <summary>Arguments</summary>
   <ul>
-    <li>```[TABLE]``` ~ specify an airtable base (ex: ```absence``` or ```extension```)</li>
-    <li>```[OPTION]``` ~ either ```students``` or ```emails```</li>
+    <li>`[TABLE]` ~ specify an airtable base (ex: `absence` or `extension`)</li>
+    <li>`[OPTION]` ~ either `students` or `emails`</li>
   <ul>
 </details>
 
@@ -109,7 +111,7 @@ email
 
 ---
 
-<h4 id="next-steps">Next Steps</h4>
+<h2 id="next-steps">Next Steps</h2>
 <ul>
   <li>Move content from bases_and_tables.py to .env?
   <details>
