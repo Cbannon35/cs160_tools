@@ -23,14 +23,18 @@
 
 <h4 id="setup">Getting Started</h4>
 <p>First, clone the repo</p>
+
 ```
 git clone [this repo]
 ```
+
 <p>Run the script</p>
+
 ```
 cd [src]
 python script.py
 ```
+
 <p>That's it! However, we need a few more things to setup email and airtable permissions...</p>
 
 ---
@@ -38,8 +42,9 @@ python script.py
 <h4 id="Requirements">Requirements</h4>
 <ul>
   <li>
-    Environment Variables
+    
     <details open="open">
+    <summary>Environment Variables</summary>
       Create a ```.env``` file in the root of the project and then add:
       ```
       AIRTABLE_API_KEY=[your airtable oauth key]
@@ -47,13 +52,15 @@ python script.py
       ```
     </details>
   </li>
-  <li>Gmail Permissions
+  <li>
     <details open="open">
+    <summary>Email permissions</summary>
       You will also need to put a ```credentials.json``` in the root. This is generated from Google via their Gmail api. I followed <a href="https://mailtrap.io/blog/python-send-email-gmail/#Is-there-an-alternative" target="_blank">this tutorial here</a>.
     </details>
   </li>
-  <li>Airtable fields
+  <li>
   <details open="open">
+  <summary>Airtable fields</summary>
     Lastly, make sure each record you want to fetch from your airtable base has the following fields
     <ul>
       <li>Emailed (checkbox) ~ will not be fetched from airtable (assumes already fetched and emailed)</li>
@@ -77,18 +84,25 @@ python script.py
 </details>
 
 <p>Startup the script</p>
+
 ```
 python3 script.py
 ```
+
 <p>Fetch from airtable and write approved & rejected students to json</p>
+
 ```
 fetch [TABLE]
 ```
+
 <p>Generate emails for students</p>
+
 ```
 generate
 ```
+
 <p>Email students</p>
+
 ```
 email
 ```
