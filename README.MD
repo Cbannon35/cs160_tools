@@ -1,7 +1,6 @@
 
-<h2 id="welcome">Welcome to CS160 Tools</h2>
+<h1 id="welcome">Welcome to CS160 Tools</h1>
 
----
 
 <p>This repo houses a script used in the <a href="cs160su23.com" target="_blank">Summer 2023 offering of CS 160</a> at UC Berkeley. The script was used to automate email response from staff for students that request extensions on assignemnts and excused absences.</p>
 
@@ -37,7 +36,6 @@ python script.py
 
 <p>That's it! However, we need a few more things to setup email and airtable permissions...</p>
 
----
 
 <h2 id="Requirements">Requirements</h2>
 
@@ -65,7 +63,6 @@ Lastly, make sure each record you want to fetch from your airtable base has the 
   <li>Wait (checkbox) ~ allows you to prevent selected records from being fetched</li>
 </ul>
 
----
 
 <h2 id="example-workflow">Example Workflow</h2>
 <details>
