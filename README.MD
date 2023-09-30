@@ -2,7 +2,7 @@
 <h1 id="welcome">Welcome to CS160 Tools</h1>
 
 
-<p>This repo houses a script used in the <a href="cs160su23.com" target="_blank">Summer 2023 offering of CS 160</a> at UC Berkeley. The script was used to automate email response from staff for students that request extensions on assignemnts and excused absences.</p>
+<p>This repo houses a script used in the <a href="cs160su23.com" target="_blank">Summer 2023 offering of CS 160</a> at UC Berkeley. The script was used to automate email response from staff for students that request excused absences or extensions on assignemnts.</p>
 
 <p>This script can be extended/adapted to other course offerings or purposes, but it is designed to fetch information from Airtable, then use that information to send emails to recipiants, using gmail.</p>
 
