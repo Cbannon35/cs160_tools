@@ -1,0 +1,8 @@
+Dear ~NAME~,
+
+We hope this email finds you well. This is an email letting you know the following extensions requests have been REJECTED.
+
+~ASSIGNMENT~ ~DUE_DATE~
+
+Best,
+Chris & CS160 staff
