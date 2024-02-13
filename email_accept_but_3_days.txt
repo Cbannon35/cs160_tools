@@ -1,0 +1,10 @@
+Dear ~NAME~,
+
+We hope this email finds you well. This is an email letting you know the following extensions have been approved, BUT you asked for more time than we allow.
+
+~ASSIGNMENT~ has been extended by +3 days (originally ~DUE_DATE~).
+
+NOTE: we do not allow extensions past 3 days except for extreme circumstances. Please respond if you believe your situation requires further discussion with a TA.
+
+Best,
+Chris + CS160 staff
