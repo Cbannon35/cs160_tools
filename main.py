@@ -23,10 +23,10 @@ def main():
     # reason = sys.argv[11] not needed
 
     flag = True
-    special = True
+    long = False
 
-    # auto accept dsp
-    if dsp != "Yes":
+    # auto accept dsp requesting extension under 4 days
+    if dsp != "Yes" and int(extension_days) <= 4:
         while True:
             user_input = input("Accept Extension? y or n ")
             if user_input.lower() == 'y':
@@ -38,20 +38,23 @@ def main():
             else:
                 print("Please enter 'y' or 'n'")
                 print('')
-        
-        while int(extension_days) > 3:
-            user_input = input("Grant greater than 3 days? y or n ")
+
+        while True:
+            user_input = input("Should student schedule time to meet?")
             if user_input.lower() == 'y':
-                special = True # user has a special reason to have more than 3 days
+                long = True
                 break
             elif user_input.lower() == 'n':
-                special = False # user does not have a special reason
+                long = False
                 break
             else:
                 print("Please enter 'y' or 'n'")
                 print('')
+
+    else:
+        long = True
     
-    email_body = read_email(flag, special)
+    email_body = read_email(flag, long)
     email_body = email_body.replace('~NAME~', first_name)
     email_body = email_body.replace('~ASSIGNMENT~', assignment)
     email_body = email_body.replace('~DATE~', extension_date)
@@ -65,16 +68,14 @@ def main():
 def send_email(subject, to, cc, body):
     '''Opens the apple mail app with fields filled out'''
     mailto_url = f"mailto:{to}?cc={cc}&subject={subject}&body={body}"
-
-    # Open Apple Mail with pre-filled fields
     subprocess.run(['open', mailto_url])
 
-def read_email(flag: bool, special: bool) -> str:
+def read_email(flag: bool, long: bool) -> str:
     ''' Flag:    True --> Accept | False --> Reject
-        Special: True --> Student doesn't have DSP and asked for > 3 days without 'extreme' reason
+        long: True --> Student has requested more than 4 days of extension time
     '''
-    if not special:
-        with open('email_accept_but_3_days.txt', 'r') as f:
+    if long:
+        with open('email_meeting.txt', 'r') as f:
             return f.read()
     if flag:
         with open('email_accept.txt', 'r') as f:

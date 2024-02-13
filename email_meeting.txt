@@ -1,0 +1,10 @@
+Dear ~NAME~,
+
+We hope this email finds you well. This is an email about the extension you reqested:
+
+~ASSIGNMENT~, requesting +~DAYS~ days.
+
+As we do not automatically accept requests for more than 4 days, please respond to this email and set up a time to talk to a TA about your circumstance.
+
+Best,
+Chris + CS160 staff
