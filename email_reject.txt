@@ -1,6 +1,6 @@
 Dear ~NAME~,
 
-We hope this email finds you well. This is an email letting you know the following extensions have been REJECTED.
+We hope this email finds you well. This is an email letting you know the following extension has been REJECTED.
 
 ~ASSIGNMENT~ ~DUE_DATE~
 
