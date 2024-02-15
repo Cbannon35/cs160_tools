@@ -26,7 +26,7 @@ def main():
     long = False
 
     # auto accept dsp requesting extension under 4 days
-    if dsp != "Yes" and int(extension_days) <= 4:
+    if dsp != "Yes":
         while True:
             user_input = input("Accept Extension? y or n ")
             if user_input.lower() == 'y':
@@ -38,21 +38,24 @@ def main():
             else:
                 print("Please enter 'y' or 'n'")
                 print('')
-
-        while True:
-            user_input = input("Should student schedule time to meet?")
-            if user_input.lower() == 'y':
-                long = True
-                break
-            elif user_input.lower() == 'n':
-                long = False
-                break
-            else:
-                print("Please enter 'y' or 'n'")
-                print('')
-
     else:
-        long = True
+        print("Student is DSP")
+        print('')
+
+    while True:
+        if int(extension_days) > 4: 
+            print("Student has requested more than 4 days of extension time")
+            print('')
+        user_input = input("Should student schedule time to meet?")
+        if user_input.lower() == 'y':
+            long = True
+            break
+        elif user_input.lower() == 'n':
+            long = False
+            break
+        else:
+            print("Please enter 'y' or 'n'")
+            print('')
     
     email_body = read_email(flag, long)
     email_body = email_body.replace('~NAME~', first_name)
@@ -61,13 +64,17 @@ def main():
     email_body = email_body.replace('~DUE_DATE~', due_date)
     email_body = email_body.replace('~DAYS~', extension_days)
 
-    subject = "CS160 Extension Request"
+    status = " [ACCEPTED]" if flag else " [REJECTED]"
+    status = status if not long else " [MEETING REQUESTED]"
+    
+    subject = "CS160 Extension Request" + status
     cc = os.getenv('CC_EMAIL')
-    send_email(subject, email, cc, email_body)
+    sender = "cbannon@berkeley.edu"
+    send_email(subject, email, cc, email_body, sender)
 
-def send_email(subject, to, cc, body):
+def send_email(subject, to, cc, body, sender):
     '''Opens the apple mail app with fields filled out'''
-    mailto_url = f"mailto:{to}?cc={cc}&subject={subject}&body={body}"
+    mailto_url = f"mailto:{to}?cc={cc}&subject={subject}&body={body}&from={sender}"
     subprocess.run(['open', mailto_url])
 
 def read_email(flag: bool, long: bool) -> str:
