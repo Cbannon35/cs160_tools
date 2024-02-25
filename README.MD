@@ -103,23 +103,3 @@ Note: You can also clear fetched records or generated emails `clear [OPTION]`
 
 ---
 
-<h2 id="next-steps">Next Steps</h2>
-<ul>
-  <li>Move content from bases_and_tables.py to .env?
-  <details>
-    Not too worried about privacy because of Airtable's permissions sytstem. Also makes more sense if people are working on the same base
-  </details>
-  </li>
-  <li>Make script more robust
-  <details>
-  Because this script had an end goal in mind it was incredibly simple to just whip it up in python. But, this means the line was blurred between how much logic should reside in airtable, and how much should reside locally. Airtable also provides great scripting tools, so potentially, there will be less logic to work with in python as it will be delegated to airtable (e.g moved subject and cc fields to airtable from <code>email_template.json</code>)
-  </details>
-  </li>
-<li>Cleanup Naming to make script more readable
-<details>
- Again, Hard to do when you are making it for a singular purpose within the course but realize it could be further generalized... maybe this script will stay generic and I will branch to a general version.
-  </details>
-</li>
-
-<ul>
-
