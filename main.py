@@ -10,23 +10,20 @@ load_dotenv()
 # Please put the assignment in quotes if it has spaces
 def main():
 
-    date = sys.argv[1]
-    time = sys.argv[2]
-    email = sys.argv[3]
-    first_name = sys.argv[4]
-    last_name = sys.argv[5]
-    assignment = sys.argv[6]
-    due_date = sys.argv[7]
-    extension_days = sys.argv[8]
-    extension_date = sys.argv[9]
-    dsp = sys.argv[10]
-    # reason = sys.argv[11] not needed
+    email = sys.argv[1]
+    first_name = sys.argv[2]
+    last_name = sys.argv[3]
+    extension_date = sys.argv[4]
+    due_date = sys.argv[5]
+    extension_days = sys.argv[6]
+    auto_accept = sys.argv[7]
+    assignment = sys.argv[8]
 
     flag = True
     long = False
 
     # auto accept dsp requesting extension under 4 days
-    if dsp != "Yes":
+    if auto_accept != "TRUE":
         while True:
             user_input = input("Accept Extension? y or n ")
             if user_input.lower() == 'y':
