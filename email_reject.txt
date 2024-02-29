@@ -3,6 +3,7 @@ Dear ~NAME~,
 We hope this email finds you well. This is an email letting you know the following extension has been REJECTED.
 
 ~ASSIGNMENT~ ~DUE_DATE~
++~DAYS~ days
 
 Please reach out if you believe you have a valid reason and would like to talk with a TA.
 

@@ -18,26 +18,31 @@ def main():
     extension_days = sys.argv[6]
     auto_accept = sys.argv[7]
     assignment = sys.argv[8]
+    rejected = sys.argv[9]
 
     flag = True
     long = False
 
     # auto accept dsp requesting extension under 4 days
-    if auto_accept != "TRUE":
-        while True:
-            user_input = input("Accept Extension? y or n ")
-            if user_input.lower() == 'y':
-                flag = True
-                break
-            elif user_input.lower() == 'n':
-                flag = False
-                break
-            else:
-                print("Please enter 'y' or 'n'")
-                print('')
+    if rejected == "TRUE":
+        print("Student has been rejected")
+        flag = False
     else:
-        print("Student is DSP")
-        print('')
+        if auto_accept != "TRUE":
+            while True:
+                user_input = input("Accept Extension? y or n ")
+                if user_input.lower() == 'y':
+                    flag = True
+                    break
+                elif user_input.lower() == 'n':
+                    flag = False
+                    break
+                else:
+                    print("Please enter 'y' or 'n'")
+                    print('')
+        else:
+            print("Student is DSP")
+            print('')
 
     while True:
         if int(extension_days) > 4: 
